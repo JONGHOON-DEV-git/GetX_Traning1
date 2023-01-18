@@ -24,4 +24,9 @@ class Products extends GetxController {
     final int index = _Items.indexWhere((item) => item.id == id);
     _Items[index].inWhshList.value = true;
   }
+
+  void removeItem(int id) {
+    final int index = _Items.indexWhere((element) => element.id == id);
+    _Items[index].inWhshList.value = false;
+  }
 }
