@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
+import 'package:getx_list_practice/screens/wishi_list_screen.dart';
 import 'package:getx_list_practice/state/product.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -28,8 +27,8 @@ class HomeScreen extends StatelessWidget {
               alignment: Alignment.center,
               child: Obx(() => Text('WishList : ${_p.wishListItems.length}')),
             ),
-            onTap: () => Navigator.push(
-                context, MaterialPageRoute(builder: (context) => Container())),
+            onTap: () => Navigator.push(context,
+                MaterialPageRoute(builder: (context) => WhisiListScreen())),
           ),
           const SizedBox(
             height: 20,
@@ -48,7 +47,10 @@ class HomeScreen extends StatelessWidget {
                     subtitle: Text("\$${product.price.toStringAsFixed(2)}"),
                     trailing: Obx(
                       () => IconButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            product.inWhshList.value =
+                                !product.inWhshList.value;
+                          },
                           icon: Icon(
                             Icons.favorite,
                             color: product.inWhshList.value
